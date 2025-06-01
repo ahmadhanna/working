@@ -1,0 +1,13 @@
+read files and code , its basic template to upload modals on runpod,
+
+read further docs here
+
+https://docs.runpod.io/serverless/workers/
+
+modal gitub repo link is here
+
+https://huggingface.co/acvlab/FantasyTalking
+
+use above modal and update files accordigly i want to upload this modal to run pod,
+
+note: what this modal do, take inpute image and audio and give lipsynced video
