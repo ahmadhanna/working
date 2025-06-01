@@ -1,13 +1,15 @@
-read files and code , its basic template to upload modals on runpod,
+FantasyTalking RunPod Worker - Realistic Lip-Sync Video Generation
 
-read further docs here
+This worker generates talking portrait videos with accurate lip synchronization using FantasyTalking AI model.
 
-https://docs.runpod.io/serverless/workers/
+Original FantasyTalking: https://github.com/Fantasy-AMAP/fantasy-talking
+RunPod Documentation: https://docs.runpod.io/serverless/workers/
 
-modal gitub repo link is here
+Updated to use FantasyTalking for lip-sync video generation instead of basic TTS.
 
-https://huggingface.co/acvlab/FantasyTalking
+Model repository: https://huggingface.co/acvlab/FantasyTalking
 
-use above modal and update files accordigly i want to upload this modal to run pod,
-
-note: what this modal do, take inpute image and audio and give lipsynced video
+✅ COMPLETED: Updated all files for FantasyTalking lip-sync video generation
+- Takes input image and audio, generates lip-synced video
+- GPU-accelerated with CUDA support
+- Ready for RunPod deployment
