@@ -231,12 +231,25 @@ def download_models_if_needed():
     """
     import subprocess
     import os
+    import time
+
+    print("⚠️ Note: High CPU usage (80-100%) is normal during model downloads")
+    print("   This is due to file decompression and verification processes")
 
     # Debug HuggingFace setup first
     debug_huggingface_setup()
 
     models_dir = "./models"
     os.makedirs(models_dir, exist_ok=True)
+
+    # Set process priority to reduce CPU impact (Linux only)
+    try:
+        import psutil
+        current_process = psutil.Process()
+        current_process.nice(10)  # Lower priority
+        print("✅ Reduced process priority to minimize CPU impact")
+    except:
+        print("⚠️ Could not reduce process priority (psutil not available)")
     
     # Check and download Wan2.1 model
     wan_model_path = f"{models_dir}/Wan2.1-I2V-14B-720P"
