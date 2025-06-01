@@ -168,9 +168,9 @@ def handler(event):
     input_data = event['input']
 
     # Extract parameters with defaults
+    prompt = input_data.get('prompt', 'A person is talking.')
     image_base64 = input_data.get('image')
     audio_base64 = input_data.get('audio')
-    prompt = input_data.get('prompt', 'A person is talking.')
     image_size = input_data.get('image_size', 512)
     max_num_frames = input_data.get('max_num_frames', 81)
     fps = input_data.get('fps', 23)
@@ -178,10 +178,21 @@ def handler(event):
     audio_cfg_scale = input_data.get('audio_cfg_scale', 5.0)
     seed = input_data.get('seed', 1111)
 
+    # Test mode: Use dummy data if prompt is "test"
+    if prompt.lower().strip() == "test":
+        print("🧪 TEST MODE: Using dummy image and audio data")
+        image_base64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
+        audio_base64 = "UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU+ltryxnkpBSl+zPLaizsIGGS57OihUBELTKXh8bllHgg2jdXzzn0vBSF1xe/eizEIHWq+8+OWT"
+        prompt = "A woman is talking enthusiastically with expressive hand gestures"
+        # Use smaller values for faster testing
+        image_size = 384
+        max_num_frames = 49
+        print(f"🧪 Test mode settings: {image_size}x{image_size}, {max_num_frames} frames")
+
     if not image_base64 or not audio_base64:
         return {
             "status": "error",
-            "message": "Both 'image' and 'audio' base64 strings are required"
+            "message": "Both 'image' and 'audio' base64 strings are required. Use prompt='test' for test mode with dummy data."
         }
 
     try:
