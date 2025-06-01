@@ -28,3 +28,6 @@ Model repository: https://huggingface.co/acvlab/FantasyTalking
         "seed": 1111
     }
 }
+
+
+https://docs.google.com/document/d/1D-IfRiF73cnTR-jFS5nHeIgHO4TlI2xk56ogPAhKemY/edit?usp=sharing
